@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 2 - Dynamic Product Filtering</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #filter { padding: 8px; margin-bottom: 20px; }
+        .product { border: 1px solid #ccc; padding: 12px; margin: 10px 0; border-radius: 5px; background: #f9f9f9; }
+        .product h3 { margin: 0; color: #333; }
+        .product p { margin: 5px 0 0; color: #555; }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Product Filtering System</h2>
+    <label for="filter">Filter by category</label>
+    <select id="filter">
+        <option value="all">All Products</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Clothing</option>
+    </select>
+    <div id="products-container"></div>
+    <script>
+        const products = [
+            { name: 'Laptop', category: 'electronics', price: 999 },
+            { name: 'Shirt', category: 'clothing', price: 25 },
+            { name: 'Headphones', category: 'electronics', price: 199 },
+            { name: 'Jacket', category: 'clothing', price: 80 },
+            { name: 'Smartphone', category: 'electronics', price: 699 }
+        ];
+
+        document.getElementById('filter').addEventListener('change', (e) => {
+            const selected = e.target.value;
+            const filtered = selected === 'all' ? products : products.filter(p => p.category === selected);
+            renderProducts(filtered);
+        });
+
+        function renderProducts(products) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = products.map(p => `
+                <div class="product">
+                    <h3>${p.name}</h3>
+                    <p>Price: $${p.price}</p>
+                </div>
+            `).join('');
+        }
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>
