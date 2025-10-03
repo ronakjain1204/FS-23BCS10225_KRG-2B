@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Todo List */
+body {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+}
+
+.todo-shadow {
+  box-shadow: 0 4px 24px rgba(59,130,246,0.08), 0 1.5px 6px rgba(59,130,246,0.12);
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+button:active {
+  transform: scale(0.98);
+}
